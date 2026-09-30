@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CROW — AI Video Studio</title>
+<style>
+:root{--bg:#08090c;--panel:#101218;--panel2:#151821;--text:#f3f4f6;--muted:#8d93a1;--line:#242936;--accent:#b51f38;--accent2:#e03b56;--ok:#58c98b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 70% -10%,#24101a 0,#08090c 42%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+.app{min-height:100vh;display:flex}.side{width:240px;border-right:1px solid var(--line);padding:24px 16px;background:#090a0e}.brand{font-weight:900;letter-spacing:5px;font-size:25px}.crow{color:#c7cad2;font-size:11px;letter-spacing:2px;margin:5px 0 32px}.nav{display:grid;gap:7px}.nav button{border:0;background:transparent;color:#aeb3bf;text-align:left;padding:12px;border-radius:10px;font-size:14px}.nav button.active,.nav button:hover{background:#171a22;color:white}.bottom{position:absolute;bottom:18px;color:#656b78;font-size:11px;padding:0 12px}.main{flex:1;max-width:1200px;margin:auto;padding:32px 36px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:34px}.eyebrow{color:#747a87;font-size:12px;letter-spacing:2px;text-transform:uppercase}.title{font-size:31px;font-weight:800;margin-top:7px}.avatar{width:40px;height:40px;border:1px solid #303541;border-radius:50%;display:grid;place-items:center;background:#12151c}
+.grid{display:grid;grid-template-columns:1.35fr .65fr;gap:20px}.card{background:rgba(16,18,24,.88);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 15px 50px #0005}.card h2{font-size:17px;margin:0 0 7px}.hint{color:var(--muted);font-size:12px;margin-bottom:18px}textarea{width:100%;min-height:145px;resize:vertical;background:#0b0d12;border:1px solid #2a2e38;border-radius:12px;color:white;padding:16px;font:inherit;outline:none}textarea:focus{border-color:#713041}.options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}.field label{display:block;color:#818795;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:7px}.select{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:#0c0f14;color:#eee}.styles{display:flex;flex-wrap:wrap;gap:8px;margin-top:7px}.chip{border:1px solid #2a2e38;background:#0c0f14;color:#aeb3bf;border-radius:999px;padding:9px 12px;font-size:12px;cursor:pointer}.chip.selected{border-color:#8f263b;background:#32121b;color:white}.create{width:100%;margin-top:20px;border:0;border-radius:11px;padding:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:800;letter-spacing:.5px;cursor:pointer}.create:hover{filter:brightness(1.1)}.status{display:flex;gap:12px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:12px;background:#0c0f14}.bird{font-size:28px}.status b{display:block;font-size:13px}.status span{font-size:11px;color:var(--muted)}.steps{margin-top:18px;display:grid;gap:9px}.step{display:flex;gap:10px;align-items:center;font-size:12px;color:#777e8b}.dot{width:8px;height:8px;border-radius:50%;background:#353a45}.step.done{color:#cfd3dc}.step.done .dot{background:var(--ok)}.projects{margin-top:20px}.project{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #20242d}.project:last-child{border-bottom:0}.pname{font-size:13px;font-weight:700}.pmeta{font-size:11px;color:#727887;margin-top:4px}.badge{font-size:10px;color:#71d19d;border:1px solid #245b42;padding:5px 8px;border-radius:99px}.footer{margin-top:26px;color:#555b68;font-size:11px}
+@media(max-width:800px){.side{display:none}.main{padding:20px 14px}.grid{grid-template-columns:1fr}.title{font-size:26px}.options{grid-template-columns:1fr}.top{margin-bottom:22px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand">CROW</div><div class="crow">AI VIDEO STUDIO</div>
+    <div class="nav">
+      <button class="active">⌂ &nbsp; Dashboard</button>
+      <button>＋ &nbsp; Crear video</button>
+      <button>▣ &nbsp; Mis proyectos</button>
+      <button>⚙ &nbsp; Configuración</button>
+    </div>
+    <div class="bottom">Prototype v0.1</div>
+  </aside>
+  <main class="main">
+    <div class="top"><div><div class="eyebrow">CROW / Dashboard</div><div class="title">Convierte una idea en video.</div></div><div class="avatar">🐦‍⬛</div></div>
+    <div class="grid">
+      <section class="card">
+        <h2>¿Qué quieres crear?</h2>
+        <div class="hint">Escribe una idea, título o tema. CROW hará el resto.</div>
+        <textarea id="idea" placeholder="Ejemplo: ¿Qué pasaría si los insectos tuvieran el tamaño de los humanos?"></textarea>
+        <div class="field" style="margin-top:16px"><label>Estilo</label><div class="styles">
+          <button class="chip selected">Documental</button><button class="chip">Misterio</button><button class="chip">Ciencia</button><button class="chip">Entretenimiento</button><button class="chip">Impacto</button>
+        </div></div>
+        <div class="options">
+          <div class="field"><label>Duración</label><select class="select"><option>5 minutos</option><option selected>8 minutos</option><option>10 minutos</option><option>15 minutos</option></select></div>
+          <div class="field"><label>Voz</label><select class="select"><option>Masculina — Latino</option><option>Femenina — Latino</option></select></div>
+        </div>
+        <button class="create" onclick="createVideo()">🐦‍⬛ DESPERTAR A CROW</button>
+      </section>
+      <section class="card">
+        <h2>Actividad</h2><div class="hint">Estado del proyecto actual</div>
+        <div class="status"><div class="bird">🐦‍⬛</div><div><b id="state">Esperando una idea</b><span id="sub">Listo para trabajar</span></div></div>
+        <div class="steps">
+          <div class="step" id="s1"><i class="dot"></i> Investigando el tema</div>
+          <div class="step" id="s2"><i class="dot"></i> Construyendo el guion</div>
+          <div class="step" id="s3"><i class="dot"></i> Generando narración</div>
+          <div class="step" id="s4"><i class="dot"></i> Buscando material</div>
+          <div class="step" id="s5"><i class="dot"></i> Montando escenas</div>
+          <div class="step" id="s6"><i class="dot"></i> Música, SFX y subtítulos</div>
+          <div class="step" id="s7"><i class="dot"></i> Renderizando MP4</div>
+        </div>
+        <div class="projects"><h2>Últimos proyectos</h2>
+          <div class="project"><div><div class="pname">7 famosos cancelados</div><div class="pmeta">8:42 · hace 2 días</div></div><div class="badge">LISTO</div></div>
+          <div class="project"><div><div class="pname">Insectos gigantes</div><div class="pmeta">Borrador</div></div></div>
+        </div>
+      </section>
+    </div>
+    <div class="footer">CROW es un prototipo de interfaz. El motor de investigación, voz y edición se conectará después.</div>
+  </main>
+</div>
+<script>
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('selected'));c.classList.add('selected')});
+function createVideo(){
+ const idea=document.getElementById('idea').value.trim();
+ if(!idea){document.getElementById('idea').focus();return}
+ const names=['Investigando el tema','Construyendo el guion','Generando narración','Buscando material','Montando escenas','Música, SFX y subtítulos','Renderizando MP4'];
+ let i=0; document.getElementById('state').textContent='CROW está trabajando...';
+ document.getElementById('sub').textContent=idea.length>38?idea.slice(0,38)+'…':idea;
+ document.querySelectorAll('.step').forEach(x=>x.classList.remove('done'));
+ const timer=setInterval(()=>{if(i>0)document.getElementById('s'+i).classList.add('done'); if(i<7){i++;document.getElementById('state').textContent=names[i-1]}else{clearInterval(timer);document.getElementById('state').textContent='Video listo';document.getElementById('sub').textContent='Prototipo completado — MP4 próximamente'}},650);
+}
+</script>
+</body>
+</html>
